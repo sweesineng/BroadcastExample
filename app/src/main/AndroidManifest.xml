@@ -3,6 +3,7 @@
     package="com.homenas.broadcastexample">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -22,13 +23,21 @@
         <receiver android:name=".receiver.AirplaneModeReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.AIRPLANE_MODE"></action>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"></action>
             </intent-filter>
         </receiver>
 
         <receiver android:name=".receiver.WifiModeReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receiver.SdCardReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.MEDIA_EJECT" />
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+                <data android:scheme="file"></data>
             </intent-filter>
         </receiver>
     </application>

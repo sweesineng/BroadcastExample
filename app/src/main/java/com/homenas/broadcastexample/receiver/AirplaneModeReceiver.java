@@ -11,13 +11,14 @@ import android.util.Log;
  */
 
 public class AirplaneModeReceiver extends BroadcastReceiver {
+    static final String TAG = "broadcastexample";
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().intern() == Intent.ACTION_AIRPLANE_MODE_CHANGED) {
+        if (intent.getAction().intern().equals(Intent.ACTION_AIRPLANE_MODE_CHANGED)) {
             if(isAirplaneModeOn(context)) {
-                Log.i("Intent", "AIRPLANE Mode Change: On");
+                Log.i(TAG, "AIRPLANE Mode Change: On " + intent.getAction());
             }else{
-                Log.i("Intent", "AIRPLANE Mode Change: Off");
+                Log.i(TAG, "AIRPLANE Mode Change: Off "+ intent.getAction());
             }
         }
     }
